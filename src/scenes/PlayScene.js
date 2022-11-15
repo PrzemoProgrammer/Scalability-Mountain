@@ -1,6 +1,6 @@
 function sendScore(score) {
   // ajax request
-  console.log(score);
+  // console.log(score);
 }
 class PlayScene extends Phaser.Scene {
   constructor() {
@@ -43,12 +43,15 @@ class PlayScene extends Phaser.Scene {
     this.addNextPlatforms();
 
     if (this.player.body.touching.down) {
+      if (!this.player.canJump) {
+        this.player.setIdle();
+      }
       this.player.canJump = true;
       this.platformOverlap = true;
     } else {
       this.platformOverlap = false;
       this.player.canJump = false;
-      this.player.stop();
+      // this.player.stop();
     }
 
     this.checkPlayerFallDown();
@@ -102,7 +105,7 @@ class PlayScene extends Phaser.Scene {
 
   getReduceX(i) {
     if (this.player.body.y <= 9150) {
-      console.log("JAJJAJAJAJAJJAJAJAJAJAJJA");
+      // console.log("JAJJAJAJAJAJJAJAJAJAJAJJA");
       return 300;
     } else if (this.player.body.y <= 7000) {
       this.blockObstacles = true;
@@ -156,7 +159,7 @@ class PlayScene extends Phaser.Scene {
         number = 1;
       }
 
-      console.log(number);
+      // console.log(number);
 
       // let reduceX = 0;
       // let offset = 0;
@@ -205,7 +208,7 @@ class PlayScene extends Phaser.Scene {
     const platform = new Platform(
       this,
       x,
-      this.backgroundY + this.backgroundHeight - 100 * i
+      this.backgroundY + this.backgroundHeight - SPACE_BETWEEN_PLATFORMS * i
       // this.backgroundY + this.backgroundHeight - (100 + 0.3 * i) * i - 100
     );
 
@@ -236,7 +239,6 @@ class PlayScene extends Phaser.Scene {
   checkPlayerFallDown() {
     if (this.player.isFellDown(this.backgroundY + this.backgroundHeight)) {
       this.hudScene.stopScore = true;
-      console.log(this.hudScene.score);
       sendScore(0);
       this.scene.stop();
       this.hudScene.stopScene();
@@ -273,7 +275,7 @@ class PlayScene extends Phaser.Scene {
       goat,
       () => {
         if (this.player.isImmortal) return;
-        console.log("goat collision");
+        // console.log("goat collision");
         if (this.player.isDead()) {
           sendScore(0);
           this.scene.stop();
@@ -282,7 +284,7 @@ class PlayScene extends Phaser.Scene {
         }
         this.player.getHurt();
         this.player.healthBar.getDamage(() => {
-          console.log("lost");
+          // console.log("lost");
         });
       },
       undefined,
@@ -318,7 +320,7 @@ class PlayScene extends Phaser.Scene {
       this.player,
       bottle,
       () => {
-        console.log("bottle collision");
+        // console.log("bottle collision");
         bottle.destroy();
         this.hudScene.timer.addTime(5);
         // this.player.healthBar.heal();
@@ -351,7 +353,7 @@ class PlayScene extends Phaser.Scene {
       this.player,
       this.finishLine,
       () => {
-        console.log("win");
+        // console.log("win");
         sendScore(this.hudScene.score);
         this.scene.stop();
         this.hudScene.stopScene();

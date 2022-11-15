@@ -21,7 +21,7 @@ class HudScene extends Phaser.Scene {
       // this.score
       sendScore(this.score);
       this.blockSceneUpdate = true;
-      console.log(1);
+      // console.log(1);
       this.scene.stop();
       this.playScene.scene.stop();
       this.scene.start("DeadScene");

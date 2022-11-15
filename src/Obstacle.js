@@ -23,8 +23,6 @@ class Obstacle extends Phaser.GameObjects.Sprite {
 
     //   this.body.height = 200;
     //   this.body.offset.y = 90;
-
-    // console.log(this);
   }
 
   flipX() {

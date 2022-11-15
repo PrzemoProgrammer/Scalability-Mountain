@@ -50,7 +50,6 @@ class HealthBar {
 
   getDamage(cb) {
     if (this.isDead()) {
-      console.log(1);
       cb();
       return;
     }
