@@ -47,6 +47,7 @@ class DeadScene extends Phaser.Scene {
       .setScale(1.5);
 
     playButton.on("pointerdown", () => {
+      this.scene.restart("PlayScene");
       this.scene.start("PlayScene");
     });
   }

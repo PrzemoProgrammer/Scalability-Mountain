@@ -10,7 +10,7 @@ class MenuScene extends Phaser.Scene {
     this.gw = this.game.config.width;
     this.gh = this.game.config.height;
 
-    // this.selectedSkin = `Character 4`;
+    // this.selectedSkin = `Character 3`;
     this.selectedSkin = `Character ${charID}`;
     this.addBackground();
     this.addText();

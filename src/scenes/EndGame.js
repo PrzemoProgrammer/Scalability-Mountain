@@ -44,7 +44,10 @@ class EndScene extends Phaser.Scene {
       .setScale(1.5);
 
     playButton.on("pointerdown", () => {
-      this.scene.start("PlayScene");
+      const element = document.querySelector("canvas");
+      element.remove();
+      game.destroy();
+      game = new Phaser.Game(config);
     });
   }
 }

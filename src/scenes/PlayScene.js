@@ -37,6 +37,21 @@ class PlayScene extends Phaser.Scene {
     });
     this.player.setCheckCollision();
     this.handleInputs = new HandleInputs(this);
+
+    // if(game.plugins.game.input.keyboard) {
+
+    // }
+
+    // this.registry.destroy();
+    // this.events.off();
+    // this.scene.restart();
+
+    // console.log(game);
+
+    // console.log(game.plugins.game.input.keyboard);
+    // console.log(game.plugins.game.input.keyboard);
+    // // console.log();
+    // console.log(game);
   }
 
   update() {
@@ -355,6 +370,8 @@ class PlayScene extends Phaser.Scene {
       () => {
         // console.log("win");
         sendScore(this.hudScene.score);
+
+        game.plugins.game.input.keyboard.destroy();
         this.scene.stop();
         this.hudScene.stopScene();
         this.scene.start("EndScene");

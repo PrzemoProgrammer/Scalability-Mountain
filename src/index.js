@@ -3,7 +3,7 @@ const config = {
   physics: {
     default: "arcade",
     arcade: {
-      debug: true,
+      debug: false,
       gravity: { y: 2000 },
     },
   },
@@ -17,4 +17,4 @@ const config = {
   scene: [PreloadScene, MenuScene, PlayScene, HudScene, DeadScene, EndScene],
 };
 
-const game = new Phaser.Game(config);
+let game = new Phaser.Game(config);
